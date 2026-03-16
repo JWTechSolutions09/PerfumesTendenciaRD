@@ -74,17 +74,18 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-neutral-700 hover:text-neutral-900 transition-colors duration-200 font-light text-sm uppercase tracking-wider"
+                className="text-neutral-700 hover:text-neutral-900 transition-colors duration-200 font-light text-sm uppercase tracking-wider relative group"
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neutral-900 transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
-          </div>
+          </nav>
 
           {/* Actions */}
           <div className="flex items-center space-x-4">

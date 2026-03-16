@@ -51,4 +51,39 @@ export const brands: Brand[] = [
     slug: 'jean-paul-gaultier',
     description: 'Provocación elegante y creatividad sin límites. Fragancias que celebran la individualidad y la libertad.',
   },
+  {
+    name: 'Valentino',
+    slug: 'valentino',
+    description: 'Elegancia italiana y sofisticación contemporánea. Fragancias que reflejan el lujo y la belleza atemporal.',
+  },
+  {
+    name: 'Gucci',
+    slug: 'gucci',
+    description: 'Lujo italiano y estilo vanguardista. Fragancias que combinan tradición y modernidad con un toque audaz.',
+  },
+  {
+    name: 'Prada',
+    slug: 'prada',
+    description: 'Minimalismo sofisticado y elegancia refinada. Fragancias que celebran la simplicidad y el buen gusto.',
+  },
+  {
+    name: 'Burberry',
+    slug: 'burberry',
+    description: 'Herencia británica y elegancia clásica. Fragancias que evocan la tradición y la sofisticación inglesa.',
+  },
+  {
+    name: 'Hugo Boss',
+    slug: 'hugo-boss',
+    description: 'Precisión alemana y elegancia empresarial. Fragancias que reflejan el éxito y la sofisticación moderna.',
+  },
+  {
+    name: 'Calvin Klein',
+    slug: 'calvin-klein',
+    description: 'Minimalismo americano y estilo urbano. Fragancias que celebran la simplicidad y la modernidad.',
+  },
+  {
+    name: 'Lancôme',
+    slug: 'lancome',
+    description: 'Elegancia francesa y sofisticación femenina. Fragancias que celebran la belleza y la feminidad.',
+  },
 ]

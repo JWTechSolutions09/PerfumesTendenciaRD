@@ -25,8 +25,12 @@ export default function ProductCard({ product, onViewDetails, index = 0 }: Produ
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -8 }}
+      transition={{ 
+        duration: 0.4, 
+        delay: index * 0.05,
+        ease: [0.25, 0.1, 0.25, 1]
+      }}
+      whileHover={{ y: -8, transition: { duration: 0.3 } }}
       className="group bg-white border border-neutral-200 hover:border-neutral-900 transition-all duration-300 overflow-hidden shadow-sm"
     >
       {/* Image Container */}
@@ -37,6 +41,8 @@ export default function ProductCard({ product, onViewDetails, index = 0 }: Produ
           fill
           className="object-cover group-hover:scale-110 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          loading={index < 6 ? "eager" : "lazy"}
+          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         

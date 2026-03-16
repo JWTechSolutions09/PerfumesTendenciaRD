@@ -136,11 +136,11 @@ export default function CartDrawer() {
                   >
                     Vaciar
                   </button>
-                  <Link href="/#contacto" onClick={() => setIsOpen(false)}>
+                  <Link href="/checkout" onClick={() => setIsOpen(false)}>
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex-1 px-4 py-3 bg-white text-black font-semibold uppercase tracking-wider hover:bg-white/90 transition-colors w-full"
+                      className="flex-1 px-4 py-3 bg-neutral-900 text-white font-semibold uppercase tracking-wider hover:bg-neutral-800 transition-colors w-full"
                     >
                       Continuar
                     </motion.button>

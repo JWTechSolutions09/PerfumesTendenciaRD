@@ -29,7 +29,7 @@ export default function FeaturedSection({ onViewDetails }: FeaturedSectionProps)
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-20"
         >
           <div className="text-center mb-12">
@@ -57,7 +57,7 @@ export default function FeaturedSection({ onViewDetails }: FeaturedSectionProps)
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-serif text-neutral-900 mb-4">

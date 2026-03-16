@@ -42,3 +42,12 @@ export interface Brand {
   description: string
   logo?: string
 }
+
+export interface CheckoutFormData {
+  email: string
+  phone: string
+  name: string
+  address?: string
+  needsDelivery: boolean
+  paymentMethod: 'efectivo' | 'transferencia'
+}

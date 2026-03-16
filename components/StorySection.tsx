@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 
 export default function StorySection() {
   const ref1 = useRef(null)
@@ -21,16 +22,24 @@ export default function StorySection() {
             initial={{ opacity: 0, x: -50 }}
             animate={inView1 ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="relative h-96 lg:h-[500px]"
+            className="relative h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-lg overflow-hidden"
           >
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage:
-                  'url(https://images.unsplash.com/photo-1595425970377-c97073cce242?w=800&h=800&fit=crop)',
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={inView1 ? { scale: 1, opacity: 1 } : {}}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="relative w-64 h-64 md:w-80 md:h-80"
+            >
+              <Image
+                src="/Logo.png"
+                alt="Perfumes Tendencia RD"
+                fill
+                className="object-contain p-8"
+                sizes="(max-width: 768px) 256px, 320px"
+                priority
+              />
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -105,7 +114,7 @@ export default function StorySection() {
           initial={{ opacity: 0, y: 50 }}
           animate={inView3 ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto space-y-6 bg-white/5 border border-white/10 px-8 py-10 md:px-12 md:py-12"
+          className="text-center max-w-3xl mx-auto space-y-6 bg-white border border-neutral-200 shadow-sm px-8 py-10 md:px-12 md:py-12 rounded-lg"
         >
           <h2 className="text-4xl md:text-5xl font-serif text-neutral-900">
             Tu Esencia,{' '}
@@ -119,14 +128,6 @@ export default function StorySection() {
           <p className="text-neutral-600 leading-relaxed font-light">
             Descubre la fragancia que te define. Explora nuestro catálogo y deja que
             cada nota te guíe hacia una experiencia olfativa inolvidable.
-          </p>
-          <p className="text-neutral-600 leading-relaxed font-light">
-            Trabajamos con perfiles olfativos cuidadosamente curados para distintos
-            momentos de tu vida: desde firmas diarias luminosas y limpias, hasta
-            composiciones intensas para noches especiales y ocasiones inolvidables.
-            Queremos que cada aplicación de perfume se sienta como un ritual
-            íntimo, casi cinematográfico, donde el aroma acompaña la forma en que
-            te presentas al mundo.
           </p>
         </motion.div>
       </div>
