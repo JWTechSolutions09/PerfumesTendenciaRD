@@ -3,12 +3,18 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useCart } from '@/hooks/useCart'
 
 export default function CartDrawer() {
+  const router = useRouter()
   const { items, isOpen, setIsOpen, updateQuantity, removeItem, clearCart } =
     useCart()
+
+  const handleContinue = () => {
+    setIsOpen(false)
+    router.push('/checkout')
+  }
 
   return (
     <AnimatePresence>
@@ -136,15 +142,14 @@ export default function CartDrawer() {
                   >
                     Vaciar
                   </button>
-                  <Link href="/checkout" onClick={() => setIsOpen(false)}>
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex-1 px-4 py-3 bg-neutral-900 text-white font-semibold uppercase tracking-wider hover:bg-neutral-800 transition-colors w-full"
-                    >
-                      Continuar
-                    </motion.button>
-                  </Link>
+                  <motion.button
+                    onClick={handleContinue}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex-1 px-4 py-3 bg-neutral-900 text-white font-semibold uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+                  >
+                    Continuar
+                  </motion.button>
                 </div>
               </div>
             )}

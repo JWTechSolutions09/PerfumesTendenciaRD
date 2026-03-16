@@ -22,24 +22,27 @@ export default function StorySection() {
             initial={{ opacity: 0, x: -50 }}
             animate={inView1 ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="relative h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-lg overflow-hidden"
+            className="relative h-96 lg:h-[500px] flex items-center justify-center bg-white border border-neutral-200 rounded-lg overflow-hidden shadow-lg"
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={inView1 ? { scale: 1, opacity: 1 } : {}}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="relative w-64 h-64 md:w-80 md:h-80"
+              initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
+              animate={inView1 ? { scale: 1, opacity: 1, rotate: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100 }}
+              className="relative w-72 h-72 md:w-96 md:h-96 z-10"
             >
               <Image
                 src="/Logo.png"
                 alt="Perfumes Tendencia RD"
                 fill
-                className="object-contain p-8"
-                sizes="(max-width: 768px) 256px, 320px"
+                className="object-contain p-6"
+                sizes="(max-width: 768px) 288px, 384px"
                 priority
               />
             </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
+            {/* Decorative background elements */}
+            <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 via-white to-neutral-100" />
+            <div className="absolute top-4 right-4 w-32 h-32 bg-neutral-200/30 rounded-full blur-2xl" />
+            <div className="absolute bottom-4 left-4 w-24 h-24 bg-neutral-300/20 rounded-full blur-xl" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -47,10 +50,21 @@ export default function StorySection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <h2 className="text-4xl md:text-5xl font-serif text-neutral-900">
-              El Arte del{' '}
-              <span className="text-neutral-500">Aroma</span>
-            </h2>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+                <Image
+                  src="/Logo.png"
+                  alt="Perfumes Tendencia RD"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 64px, 80px"
+                />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-serif text-neutral-900">
+                El Arte del{' '}
+                <span className="text-neutral-500">Aroma</span>
+              </h2>
+            </div>
             <p className="text-neutral-700 text-lg leading-relaxed font-light">
               Cada fragancia cuenta una historia única. En Perfumes Tendencia RD, creemos
               que un perfume no es solo un aroma, es una expresión de identidad, un

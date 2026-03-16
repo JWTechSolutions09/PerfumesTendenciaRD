@@ -9,12 +9,15 @@ import { useCart } from '@/hooks/useCart'
 import { useRouter } from 'next/navigation'
 import { formatPrice } from '@/lib/utils'
 import { CheckoutFormData } from '@/types'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 const DELIVERY_COST = 5000 // Costo de envío en pesos
 
 export default function CheckoutPage() {
   const router = useRouter()
   const { items, clearCart } = useCart()
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [formData, setFormData] = useState<CheckoutFormData>({
     email: '',
     phone: '',
@@ -29,7 +32,7 @@ export default function CheckoutPage() {
     if (items.length === 0) {
       router.push('/catalogo')
     }
-  }, [items, router])
+  }, [items.length, router])
 
   const subtotal = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0)
   const deliveryCost = formData.needsDelivery ? DELIVERY_COST : 0
@@ -91,12 +94,26 @@ export default function CheckoutPage() {
   }
 
   if (items.length === 0) {
-    return null
+    return (
+      <main className="min-h-screen bg-neutral-50 flex items-center justify-center">
+        <Navbar onSearchClick={() => setIsSearchOpen(true)} />
+        <div className="text-center">
+          <p className="text-neutral-600 mb-4">Tu carrito está vacío</p>
+          <Link
+            href="/catalogo"
+            className="inline-block px-6 py-3 bg-neutral-900 text-white font-semibold uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+          >
+            Ir al Catálogo
+          </Link>
+        </div>
+      </main>
+    )
   }
 
   return (
     <main className="min-h-screen bg-neutral-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <Navbar onSearchClick={() => setIsSearchOpen(true)} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 pt-32">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -351,6 +368,7 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   )
 }
