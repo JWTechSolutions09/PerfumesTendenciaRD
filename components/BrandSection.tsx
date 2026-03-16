@@ -28,7 +28,7 @@ export default function BrandSection({ onViewDetails }: BrandSectionProps) {
   }))
 
   return (
-    <section id="marcas" ref={ref} className="py-24 bg-black">
+    <section id="marcas" ref={ref} className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -36,10 +36,10 @@ export default function BrandSection({ onViewDetails }: BrandSectionProps) {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif text-white mb-4">
-            Nuestras <span className="text-white/80">Marcas</span>
+          <h2 className="text-4xl md:text-5xl font-serif text-neutral-900 mb-4">
+            Nuestras <span className="text-neutral-500">Marcas</span>
           </h2>
-          <p className="text-white/60 max-w-2xl mx-auto font-light">
+          <p className="text-neutral-600 max-w-2xl mx-auto font-light">
             Descubre las colecciones exclusivas de las casas de perfumería más
             prestigiosas del mundo
           </p>
@@ -56,8 +56,8 @@ export default function BrandSection({ onViewDetails }: BrandSectionProps) {
               onClick={() => setSelectedBrand(null)}
               className={`px-6 py-3 uppercase tracking-wider text-sm font-light transition-all duration-200 ${
                 selectedBrand === null
-                  ? 'bg-white text-black'
-                  : 'bg-white/10 text-white/80 hover:bg-white/20'
+                  ? 'bg-neutral-900 text-white'
+                  : 'bg-white border border-neutral-300 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900'
               }`}
             >
             Todas
@@ -68,8 +68,8 @@ export default function BrandSection({ onViewDetails }: BrandSectionProps) {
                 onClick={() => setSelectedBrand(brand.name)}
                 className={`px-6 py-3 uppercase tracking-wider text-sm font-light transition-all duration-200 ${
                   selectedBrand === brand.name
-                    ? 'bg-white text-black'
-                    : 'bg-white/10 text-white/80 hover:bg-white/20'
+                    ? 'bg-neutral-900 text-white'
+                    : 'bg-white border border-neutral-300 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900'
                 }`}
               >
               {brand.name}
@@ -88,10 +88,10 @@ export default function BrandSection({ onViewDetails }: BrandSectionProps) {
               transition={{ duration: 0.5 }}
             >
               <div className="mb-8">
-                <h3 className="text-3xl font-serif text-white mb-2">
+                <h3 className="text-3xl font-serif text-neutral-900 mb-2">
                   {selectedBrand}
                 </h3>
-                <p className="text-white/60 font-light">
+                <p className="text-neutral-600 font-light">
                   {
                     brands.find((b) => b.name === selectedBrand)?.description
                   }
@@ -126,10 +126,10 @@ export default function BrandSection({ onViewDetails }: BrandSectionProps) {
                   transition={{ duration: 0.6, delay: brandIndex * 0.1 }}
                 >
                   <div className="mb-8">
-                    <h3 className="text-3xl font-serif text-white mb-2">
+                    <h3 className="text-3xl font-serif text-neutral-900 mb-2">
                       {brandGroup.name}
                     </h3>
-                    <p className="text-white/60 font-light max-w-2xl">
+                    <p className="text-neutral-600 font-light max-w-2xl">
                       {brandGroup.description}
                     </p>
                   </div>

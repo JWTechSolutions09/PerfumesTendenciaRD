@@ -22,7 +22,7 @@ export default function CatalogSection({ onViewDetails }: CatalogSectionProps) {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="catalogo" ref={ref} className="py-24 bg-black">
+    <section id="catalogo" ref={ref} className="py-24 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -32,10 +32,10 @@ export default function CatalogSection({ onViewDetails }: CatalogSectionProps) {
         >
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-4xl md:text-5xl font-serif text-white mb-4">
-                Catálogo <span className="text-white/80">Completo</span>
+              <h2 className="text-4xl md:text-5xl font-serif text-neutral-900 mb-4">
+                Catálogo <span className="text-neutral-500">Completo</span>
               </h2>
-              <p className="text-white/60 font-light">
+              <p className="text-neutral-600 font-light">
                 Explora nuestra colección completa de fragancias premium
               </p>
             </div>
@@ -43,7 +43,7 @@ export default function CatalogSection({ onViewDetails }: CatalogSectionProps) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsFilterOpen(true)}
-              className="md:hidden px-4 py-2 border border-white/20 text-white/80 hover:border-white hover:text-white transition-colors flex items-center gap-2"
+              className="md:hidden px-4 py-2 border border-neutral-300 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900 transition-colors flex items-center gap-2 bg-white"
             >
               <Filter className="w-5 h-5" />
               Filtros

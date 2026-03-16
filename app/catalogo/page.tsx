@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import CatalogSection from '@/components/CatalogSection'
+import BrandSection from '@/components/BrandSection'
 import SearchBar from '@/components/SearchBar'
 import ProductModal from '@/components/ProductModal'
 import CartDrawer from '@/components/CartDrawer'
@@ -28,6 +29,7 @@ export default function CatalogPage() {
         onProductSelect={handleViewDetails}
       />
       <CatalogSection onViewDetails={handleViewDetails} />
+      <BrandSection onViewDetails={handleViewDetails} />
       <ProductModal
         product={selectedProduct}
         isOpen={isProductModalOpen}
