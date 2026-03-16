@@ -1,3 +1,4 @@
-export * from './useCart'
+export * from './cartContext'
+
 
 
