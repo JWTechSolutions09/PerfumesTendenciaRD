@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, X } from 'lucide-react'
+import Image from 'next/image'
 import { useFilters } from '@/hooks/useFilters'
 import { products } from '@/data/products'
 import { Product } from '@/types'
@@ -90,10 +91,12 @@ export default function SearchBar({ isOpen, onClose, onProductSelect }: SearchBa
                           className="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-colors"
                         >
                           <div className="relative w-16 h-16 flex-shrink-0">
-                            <img
+                            <Image
                               src={product.image}
                               alt={product.name}
-                              className="w-full h-full object-cover"
+                              fill
+                              className="object-cover"
+                              sizes="64px"
                             />
                           </div>
                           <div className="flex-1 min-w-0">
