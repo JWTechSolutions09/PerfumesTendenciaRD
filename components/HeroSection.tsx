@@ -93,7 +93,7 @@ export default function HeroSection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border-2 border-white/60 text-white font-semibold uppercase tracking-wider hover:border-white hover:text-white transition-all duration-200"
+              className="px-8 py-4 border-2 border-neutral-800 text-neutral-800 font-semibold uppercase tracking-wider hover:bg-neutral-900 hover:text-white transition-all duration-200"
             >
               Comprar Ahora
             </motion.button>

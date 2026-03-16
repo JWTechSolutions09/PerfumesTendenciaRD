@@ -1,2 +1,3 @@
-export * from './useCart.tsx'
+export * from './useCart'
+
 
