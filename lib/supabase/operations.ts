@@ -247,7 +247,7 @@ export async function seedSupabaseIfEmpty(
   supabase: SupabaseClient,
   seedBrands: Brand[],
   seedProducts: Product[]
-): Promise<void> {
+): Promise<{ brands: Brand[]; products: Product[] }> {
   const { count: bCount } = await supabase
     .from('brands')
     .select('*', { count: 'exact', head: true })
@@ -255,7 +255,9 @@ export async function seedSupabaseIfEmpty(
     .from('products')
     .select('*', { count: 'exact', head: true })
 
-  if ((bCount ?? 0) > 0 || (pCount ?? 0) > 0) return
+  if ((bCount ?? 0) > 0 || (pCount ?? 0) > 0) {
+    return { brands: [], products: [] }
+  }
 
   const brandRows = seedBrands.map((b) => brandToDbInsert(b))
   const { data: insertedBrands, error: bErr } = await supabase
@@ -275,8 +277,15 @@ export async function seedSupabaseIfEmpty(
     return productToDbInsert({ ...p, id }, bid)
   })
 
-  const { error: pErr } = await supabase.from('products').insert(productRows)
+  const { data: insertedProducts, error: pErr } = await supabase
+    .from('products')
+    .insert(productRows)
+    .select('*')
   if (pErr) throw pErr
+
+  const brands = ((insertedBrands as DbBrand[]) || []).map(dbBrandToBrand)
+  const products = ((insertedProducts as DbProduct[]) || []).map(dbProductToProduct)
+  return { brands, products }
 }
 
 export async function ensureSiteContentRow(
