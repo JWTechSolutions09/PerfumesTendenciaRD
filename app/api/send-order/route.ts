@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     // })
     //
     // await sendEmail({
-    //   to: 'contacto@perfumes-tendencia.com', // Dueño
+    //   to: 'perfumestendenciard@gmail.com', // Dueño
     //   subject: 'Nuevo Pedido Recibido',
     //   html: generateAdminOrderEmailHTML(orderData),
     // })
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     // TODO: Configurar servicio de WhatsApp
     // Ejemplo con Twilio:
     // await sendWhatsApp({
-    //   to: '18099809900',
+    //   to: '18498483939',
     //   message: generateWhatsAppMessage(orderData),
     // })
 

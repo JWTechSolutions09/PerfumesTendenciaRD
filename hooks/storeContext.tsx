@@ -188,7 +188,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, [adminRole])
 
   const loginAdmin = (username: string, password: string) => {
-    const ok = username === 'admin' && password === 'admin290426'
+    const ok = username === 'Victor' && password === 'Victor321'
     if (ok) {
       setIsAdminAuthenticated(true)
       setAdminRole('admin')

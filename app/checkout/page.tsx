@@ -94,7 +94,7 @@ export default function CheckoutPage() {
         `%0A%0A💰 Total: ${formatPrice(total)}`
 
       window.open(
-        `https://wa.me/18099809900?text=${whatsappMessage}`,
+        `https://wa.me/18498483939?text=${whatsappMessage}`,
         '_blank'
       )
 

@@ -21,7 +21,11 @@ export default function Footer() {
   }
 
   const socialLinks = [
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    {
+      icon: Instagram,
+      href: 'https://www.instagram.com/p/DQlDPJRDkgF/?igsh=MW83eGo0dno1cXN5bQ==',
+      label: 'Instagram',
+    },
     { icon: Facebook, href: '#', label: 'Facebook' },
     { icon: Twitter, href: '#', label: 'Twitter' },
   ]
@@ -54,6 +58,8 @@ export default function Footer() {
                       href={social.href}
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.9 }}
+                      target="_blank"
+                      rel="noreferrer"
                       className="text-white/60 hover:text-white transition-colors"
                       aria-label={social.label}
                     >

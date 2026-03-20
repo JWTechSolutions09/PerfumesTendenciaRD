@@ -34,7 +34,7 @@ export default function ContactSection() {
                   <p className="uppercase tracking-wide text-xs text-neutral-500">
                     Teléfono
                   </p>
-                  <p className="font-medium text-neutral-900">809 980 9900</p>
+                  <p className="font-medium text-neutral-900">1 (849) 848-3939</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -46,7 +46,7 @@ export default function ContactSection() {
                     Correo
                   </p>
                   <p className="font-medium text-neutral-900">
-                    contacto@perfumes-tendencia.com
+                    perfumestendenciard@gmail.com
                   </p>
                 </div>
               </div>
@@ -59,7 +59,7 @@ export default function ContactSection() {
                     WhatsApp
                   </p>
                   <a
-                    href="https://wa.me/18099809900"
+                    href="https://wa.me/18498483939"
                     target="_blank"
                     rel="noreferrer"
                     className="font-medium text-neutral-900 underline underline-offset-4 decoration-neutral-300 hover:decoration-neutral-800"
