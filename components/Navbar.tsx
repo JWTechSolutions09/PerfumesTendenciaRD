@@ -7,12 +7,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Search, ShoppingCart, Menu, X } from 'lucide-react'
 import { useCart } from '@/hooks/useCart'
 import { cn } from '@/lib/utils'
+import { useStore } from '@/hooks/storeContext'
 
 interface NavbarProps {
   onSearchClick: () => void
 }
 
 export default function Navbar({ onSearchClick }: NavbarProps) {
+  const { siteContent } = useStore()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { getTotalItems, setIsOpen } = useCart()
@@ -55,7 +57,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
               className="relative h-10 w-10 md:h-12 md:w-12 overflow-hidden rounded-full border border-white bg-white"
             >
               <Image
-                src="/Logo.png"
+                src={siteContent.navbarLogoUrl}
                 alt="Perfumes Tendencia RD"
                 fill
                 className="object-contain p-1"
@@ -68,7 +70,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
                 Perfumes
               </span>
               <span className="text-lg md:text-xl font-serif text-neutral-900 group-hover:text-neutral-700 transition-colors">
-                Tendencia RD
+                {siteContent.heroSubtitle}
               </span>
             </div>
           </Link>
@@ -89,6 +91,12 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
+            <Link
+              href="/admin"
+              className="hidden md:inline-flex items-center border border-neutral-300 px-3 py-1.5 text-xs uppercase tracking-wider text-neutral-700 hover:border-neutral-900 hover:text-neutral-900 transition-colors"
+            >
+              Admin
+            </Link>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -144,6 +152,13 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
             className="md:hidden bg-white backdrop-blur-md border-t border-neutral-200"
           >
             <div className="px-4 py-6 space-y-4">
+              <Link
+                href="/admin"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-neutral-700 hover:text-neutral-900 transition-colors font-light text-sm uppercase tracking-wider py-2"
+              >
+                Panel Admin
+              </Link>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

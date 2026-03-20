@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { CartProvider } from '@/hooks/useCart'
+import { StoreProvider } from '@/hooks/storeContext'
 
 export const metadata: Metadata = {
   title: 'Perfumes Tendencia RD - Tienda de Perfumes Premium',
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <CartProvider>{children}</CartProvider>
+        <StoreProvider>
+          <CartProvider>{children}</CartProvider>
+        </StoreProvider>
       </body>
     </html>
   )

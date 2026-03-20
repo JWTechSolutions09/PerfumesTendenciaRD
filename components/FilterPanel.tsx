@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { X, Filter } from 'lucide-react'
 import { useFilters } from '@/hooks/useFilters'
-import { products } from '@/data/products'
+import { useStore } from '@/hooks/storeContext'
 import { Gender, FragranceType, Availability } from '@/types'
 // import { formatPrice } from '@/lib/utils'
 
@@ -14,6 +14,7 @@ interface FilterPanelProps {
 }
 
 export default function FilterPanel({ isOpen, onClose, isMobile = false }: FilterPanelProps) {
+  const { products } = useStore()
   const {
     filters,
     toggleBrand,

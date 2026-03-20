@@ -4,8 +4,11 @@ import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useStore } from '@/hooks/storeContext'
 
 export default function HeroSection() {
+  const { siteContent } = useStore()
+
   const scrollToCatalog = () => {
     const element = document.getElementById('destacados')
     element?.scrollIntoView({ behavior: 'smooth' })
@@ -27,7 +30,7 @@ export default function HeroSection() {
           <div className="flex items-center space-x-3">
             <div className="relative h-12 w-12 overflow-hidden rounded-full border border-neutral-300 bg-white shadow-sm">
               <Image
-                src="/Logo.png"
+                src={siteContent.heroLogoUrl}
                 alt="Perfumes Tendencia RD"
                 fill
                 className="object-contain p-1.5"
@@ -40,7 +43,7 @@ export default function HeroSection() {
                 Perfumes
               </span>
               <span className="text-lg md:text-xl font-serif text-neutral-900">
-                Tendencia RD
+                {siteContent.heroSubtitle}
               </span>
             </div>
           </div>
@@ -57,9 +60,9 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-4xl md:text-6xl lg:text-7xl font-serif font-semibold text-neutral-900 mb-6 text-center"
           >
-            Perfumes
+            {siteContent.heroTitle}
             <span className="block text-neutral-500 font-light mt-2 text-lg md:text-2xl tracking-wide">
-              Tendencia RD
+              {siteContent.heroSubtitle}
             </span>
           </motion.h1>
         </motion.div>
@@ -70,8 +73,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-base md:text-lg text-neutral-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed text-center"
         >
-          Descubre fragancias que definen momentos, crean recuerdos y expresan tu
-          esencia única. Lujo, elegancia y sofisticación en cada gota.
+          {siteContent.heroDescription}
         </motion.p>
 
         <motion.div

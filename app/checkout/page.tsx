@@ -9,6 +9,7 @@ import { useCart } from '@/hooks/useCart'
 import { useRouter } from 'next/navigation'
 import { formatPrice } from '@/lib/utils'
 import { CheckoutFormData } from '@/types'
+import { useStore } from '@/hooks/storeContext'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
@@ -17,6 +18,7 @@ const DELIVERY_COST = 5000 // Costo de envío en pesos
 export default function CheckoutPage() {
   const router = useRouter()
   const { items, clearCart } = useCart()
+  const { addOrder } = useStore()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [formData, setFormData] = useState<CheckoutFormData>({
     email: '',
@@ -47,6 +49,7 @@ export default function CheckoutPage() {
       const orderData = {
         ...formData,
         items: items.map((item) => ({
+          productId: item.product.id,
           product: item.product.name,
           brand: item.product.brand,
           quantity: item.quantity,
@@ -57,6 +60,19 @@ export default function CheckoutPage() {
         total,
         date: new Date().toISOString(),
       }
+
+      await addOrder({
+        customer: formData,
+        items: items.map((item) => ({
+          productId: item.product.id,
+          name: `${item.product.brand} ${item.product.name}`,
+          quantity: item.quantity,
+          price: item.product.price,
+        })),
+        subtotal,
+        deliveryCost,
+        total,
+      })
 
       // Enviar por correo (requiere backend)
       await fetch('/api/send-order', {

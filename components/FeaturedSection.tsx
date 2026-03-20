@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { products } from '@/data/products'
+import { useStore } from '@/hooks/storeContext'
 import ProductCard from './ProductCard'
 import { Product } from '@/types'
 
@@ -12,6 +12,7 @@ interface FeaturedSectionProps {
 }
 
 export default function FeaturedSection({ onViewDetails }: FeaturedSectionProps) {
+  const { products } = useStore()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
 

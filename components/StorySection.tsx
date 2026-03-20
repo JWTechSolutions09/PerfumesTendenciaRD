@@ -4,8 +4,10 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
+import { useStore } from '@/hooks/storeContext'
 
 export default function StorySection() {
+  const { siteContent } = useStore()
   const ref1 = useRef(null)
   const ref2 = useRef(null)
   const ref3 = useRef(null)
@@ -31,7 +33,7 @@ export default function StorySection() {
               className="relative w-72 h-72 md:w-96 md:h-96 z-10"
             >
               <Image
-                src="/Logo.png"
+                src={siteContent.heroLogoUrl}
                 alt="Perfumes Tendencia RD"
                 fill
                 className="object-contain p-6"
@@ -53,7 +55,7 @@ export default function StorySection() {
             <div className="flex items-center gap-4 mb-4">
               <div className="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
                 <Image
-                  src="/Logo.png"
+                  src={siteContent.heroLogoUrl}
                   alt="Perfumes Tendencia RD"
                   fill
                   className="object-contain"
@@ -113,8 +115,7 @@ export default function StorySection() {
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
-                backgroundImage:
-                  'url(https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&h=800&fit=crop)',
+                backgroundImage: `url(${siteContent.storyImageUrl})`,
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-l from-black/60 to-transparent" />

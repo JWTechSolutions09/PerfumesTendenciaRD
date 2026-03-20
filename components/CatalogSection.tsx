@@ -6,7 +6,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Filter } from 'lucide-react'
 import { useFilters } from '@/hooks/useFilters'
-import { products } from '@/data/products'
+import { useStore } from '@/hooks/storeContext'
 import ProductGrid from './ProductGrid'
 import FilterPanel from './FilterPanel'
 import { Product } from '@/types'
@@ -16,6 +16,7 @@ interface CatalogSectionProps {
 }
 
 export default function CatalogSection({ onViewDetails }: CatalogSectionProps) {
+  const { products } = useStore()
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const { filteredProducts } = useFilters(products)
   const ref = useRef(null)

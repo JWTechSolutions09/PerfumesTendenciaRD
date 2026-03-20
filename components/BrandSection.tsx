@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { products } from '@/data/products'
-import { brands } from '@/data/brands'
+import { useStore } from '@/hooks/storeContext'
 import ProductCard from './ProductCard'
 import { Product } from '@/types'
 
@@ -14,6 +13,7 @@ interface BrandSectionProps {
 }
 
 export default function BrandSection({ onViewDetails }: BrandSectionProps) {
+  const { products, brands } = useStore()
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null)
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })

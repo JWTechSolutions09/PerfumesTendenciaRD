@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Search, X } from 'lucide-react'
 import Image from 'next/image'
 import { useFilters } from '@/hooks/useFilters'
-import { products } from '@/data/products'
+import { useStore } from '@/hooks/storeContext'
 import { Product } from '@/types'
 
 interface SearchBarProps {
@@ -15,6 +15,7 @@ interface SearchBarProps {
 }
 
 export default function SearchBar({ isOpen, onClose, onProductSelect }: SearchBarProps) {
+  const { products } = useStore()
   const { filters, filteredProducts, updateSearch } = useFilters(products)
 
   useEffect(() => {
